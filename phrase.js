@@ -3,14 +3,19 @@
 // created and they will constantly evolve until a 'phrase' matches the
 // target phrase/word
 class Phrase {
-	constructor(target) {
+	constructor(target, dna = null) {
 		this.target = target; // the target phrase
 		this.targetLength = target.length;
 
-		this.dna = ""; // the current phrase/word, this is their 'DNA'
-		this.fitness = 0;
+		if (dna !== null) {
+			this.dna = dna;
+		} else {
+			this.dna = ""; // the current phrase/word, this is their 'DNA'
+			this.generateRandomInitialPhrase();
+		}
 
-		this.generateRandomInitialPhrase();
+		this.fitness = 1;
+		this.matchedTarget = false;
 	}
 
 	generateRandomInitialPhrase() {
@@ -21,7 +26,48 @@ class Phrase {
 
 	getRandomCharacter() {
 		const chars =
-			"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+-=[]{}|;:',.<>/?`~";
+			"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+-=[]{}|;:',.<>/?`~ ";
 		return chars[Math.floor(Math.random() * chars.length)];
+	}
+
+	// calculate how close this phrase is to the target phrase, represented as 'fitness'
+	calculateFitness() {
+		let newFitness = 1;
+		for (let i = 0; i < this.dna.length; i++) {
+			let currLetter = this.dna[i];
+
+			if (currLetter === this.target[i]) {
+				newFitness += 1;
+			}
+		}
+
+		this.fitness = newFitness;
+	}
+
+	// checks if the phrase matches the target phrase
+	checkIfMatchedTarget() {
+		if (this.dna === this.target) {
+			this.matchedTarget = true;
+			return true;
+		}
+		return false;
+	}
+
+	// loop through every letter and have a chance of changing the letter randomly
+	mutate() {
+		let dnaArray = this.dna.split(""); // Convert string to array to allow modifications
+		for (let i = 0; i < dnaArray.length; i++) {
+			if (dnaArray[i] === this.target[i]) continue;
+
+			if (Math.random() < mutationRate) {
+				dnaArray[i] = this.getRandomCharacter();
+			}
+		}
+		this.dna = dnaArray.join("");
+	}
+
+	clone() {
+		let newPhrase = new Phrase(this.target, this.dna);
+		return newPhrase;
 	}
 }
