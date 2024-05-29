@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Text Target Genetic Algorithm</title>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<div id="information-side">
+			<div id="enter-phrase-container">
+				<input id="target-text-input" placeholder="Enter target phrase or word" />
+				<button>Start Algorithm</button>
+			</div>
+
+			<div id="genetic-algorithm-information">
+				<p id="generation-counter">Generation:</p>
+				<p id="population-counter">Population:</p>
+				<p id="similarity-score">Average Fitness:</p>
+				<p id="similarity-score">Mutation Rate:</p>
+			</div>
+		</div>
+
+		<div id="population-side">
+			<h2>All Phrases</h2>
+
+			<div id="population-container"></div>
+		</div>
+
+		<script src="main.js"></script>
+	</body>
+</html>
