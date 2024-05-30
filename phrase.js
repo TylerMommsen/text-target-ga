@@ -59,15 +59,14 @@ class Phrase {
 		for (let i = 0; i < dnaArray.length; i++) {
 			if (dnaArray[i] === this.target[i]) continue;
 
-			if (Math.random() < mutationRate) {
-				dnaArray[i] = this.getRandomCharacter();
-			}
+			dnaArray[i] = this.getRandomCharacter();
 		}
 		this.dna = dnaArray.join("");
 	}
 
 	clone() {
 		let newPhrase = new Phrase(this.target, this.dna);
+		newPhrase.fitness = this.fitness;
 		return newPhrase;
 	}
 }
