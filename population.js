@@ -9,7 +9,8 @@ class Population {
 		this.averageFitness = 0;
 		this.bestPhrase = null;
 
-		this.done = false;
+		this.foundFirstMatch = false;
+		this.allMatched = false;
 
 		this.createInitialPopulation();
 	}
@@ -50,6 +51,10 @@ class Population {
 			}
 		}
 
+		if (bestPhrase.dna === this.targetPhrase) {
+			this.foundFirstMatch = true;
+		}
+
 		this.bestPhrase = bestPhrase;
 	}
 
@@ -61,7 +66,7 @@ class Population {
 		}
 
 		// if reached here, then all phrases have matched the target phrase
-		this.done = true;
+		this.allMatched = true;
 	}
 
 	// generate the next generation of phrases

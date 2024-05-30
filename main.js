@@ -1,7 +1,8 @@
 // genetic algorithm variables
 let targetPhrase = "";
 let currentBestPhrase = "";
-let generationCounter = 1;
+let generationUntilFirstMatchCounter = 1;
+let generationUntilAllMatchCounter = 1;
 let populationSize = 100;
 let averageFitness = 0;
 let mutationRate = 0.1;
@@ -12,12 +13,12 @@ let population;
 // inputs
 const targetPhraseInput = document.getElementById("target-phrase-input");
 const startAlgorithmBtn = document.getElementById("start-algorithm-btn");
-const stopAlgorithmBtn = document.getElementById("stop-algorithm-btn");
 
 // genetic algorithm information
 let targetPhraseDisplay = document.getElementById("target-phrase");
 let currentBestPhraseDisplay = document.getElementById("current-best-phrase");
-let generationCounterDisplay = document.getElementById("generation-counter");
+let generationUntilFirstMatchDisplay = document.getElementById("generation-first-counter");
+let generationUntilAllMatchDisplay = document.getElementById("generation-all-counter");
 let populationSizeDisplay = document.getElementById("population-size");
 let averageFitnessDisplay = document.getElementById("average-fitness");
 let mutationRateDisplay = document.getElementById("mutation-rate");
@@ -40,14 +41,19 @@ startAlgorithmBtn.addEventListener("click", () => {
 
 function runGeneticEvolution() {
 	// run the algorithm until every phrase in the population matches the target phrase
-	if (!population.done) {
+	if (!population.allMatched) {
 		population.allPhrasesMatch(); // check if all phrases match the target
 		displayPopulation(); // display all the phrases on the screen
 		population.calculateFitness(); // calculate the fitness of every phrase to see how close it is to the target
 		population.getAverageFitnessSum(); // get the average fitness of the population
-		population.setBestPhrase(); // set the current best phrase based on fitness
+		if (!population.foundFirstMatch) {
+			population.setBestPhrase(); // set the current best phrase based on fitness
+		}
 		population.nextGeneration(); // create a new population of phrases based on the best of the last generation
-		generationCounter++;
+		if (!population.foundFirstMatch) {
+			generationUntilFirstMatchCounter++;
+		}
+		generationUntilAllMatchCounter++;
 		currentBestPhrase = population.bestPhrase.dna;
 		averageFitness = population.averageFitness;
 		updateGeneticInfoDisplay();
@@ -70,7 +76,10 @@ function displayPopulation() {
 function updateGeneticInfoDisplay() {
 	targetPhraseDisplay.innerText = "Target Phrase: " + targetPhraseInput.value;
 	currentBestPhraseDisplay.innerText = "Current Best: " + currentBestPhrase;
-	generationCounterDisplay.innerText = "Generation: " + generationCounter;
+	generationUntilFirstMatchDisplay.innerText =
+		"Generation Until First Match: " + generationUntilFirstMatchCounter;
+	generationUntilAllMatchDisplay.innerText =
+		"Generation Until All Match: " + generationUntilAllMatchCounter;
 	populationSizeDisplay.innerText = "Population: " + populationSize;
 	averageFitnessDisplay.innerText = "Average Fitness: " + averageFitness;
 	mutationRateDisplay.innerText = "Mutation Rate: " + mutationRate * 10 + "%";

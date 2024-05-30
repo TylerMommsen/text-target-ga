@@ -7,16 +7,15 @@
 
 body {
 	padding: 10rem;
-	display: grid;
-	grid-template-columns: 1fr 1fr;
+	display: flex;
 	gap: 5rem;
 	height: 100vh;
 }
 
 #information-side {
+	flex: 1;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
 	gap: 8rem;
 }
 
@@ -47,9 +46,9 @@ body {
 	color: white;
 }
 
-#target-text-input {
-	padding: 0.6rem 1rem 0.6rem 1rem;
-	border-radius: 0.8rem;
+#target-phrase-input {
+	padding: 0.8rem 1.2rem 0.8rem 1.2rem;
+	font-size: 3rem;
 	border: 1px solid black;
 }
 
@@ -59,4 +58,17 @@ body {
 	gap: 1rem;
 	font-weight: bold;
 	font-size: 3rem;
+}
+
+#population-side {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+#population-container {
+	height: 90%;
+	overflow-y: scroll;
+	font-size: 1.6rem;
 }
