@@ -33,11 +33,11 @@ class Population {
 	getAverageFitnessSum() {
 		let fitnessSum = 0;
 		for (let i = 0; i < this.phrases.length; i++) {
-			fitnessSum += this.phrases[i].fitness;
+			fitnessSum += (this.phrases[i].fitness - 1) / this.targetPhrase.length;
 		}
 
 		this.fitnessSum = fitnessSum;
-		this.averageFitness = fitnessSum / this.phrases.length;
+		this.averageFitness = ((fitnessSum / this.phrases.length) * 100).toFixed(2);
 	}
 
 	// the phrase with the highest fitness is selected as the best phrase

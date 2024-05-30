@@ -10,6 +10,8 @@ let mutationRate = 0.1;
 // population class variable
 let population;
 
+let algorithmRunning = false;
+
 // inputs
 const targetPhraseInput = document.getElementById("target-phrase-input");
 const startAlgorithmBtn = document.getElementById("start-algorithm-btn");
@@ -27,10 +29,20 @@ let mutationRateDisplay = document.getElementById("mutation-rate");
 const populationContainer = document.getElementById("population-container");
 
 startAlgorithmBtn.addEventListener("click", () => {
-	if (targetPhraseInput.value === "") {
+	if (targetPhraseInput.value === "" || algorithmRunning) {
 		return;
 	} else {
+		algorithmRunning = true;
+		startAlgorithmBtn.style.backgroundColor = "#888";
 		targetPhrase = targetPhraseInput.value;
+
+		// reset values
+		currentBestPhrase = "";
+		generationUntilFirstMatchCounter = 1;
+		generationUntilAllMatchCounter = 1;
+		populationSize = 100;
+		averageFitness = 0;
+		mutationRate = 0.1;
 
 		updateGeneticInfoDisplay();
 	}
@@ -58,7 +70,10 @@ function runGeneticEvolution() {
 		averageFitness = population.averageFitness;
 		updateGeneticInfoDisplay();
 
-		setTimeout(runGeneticEvolution, 100);
+		setTimeout(runGeneticEvolution, 50);
+	} else {
+		algorithmRunning = false;
+		startAlgorithmBtn.style.backgroundColor = "#00b800";
 	}
 }
 
@@ -81,6 +96,6 @@ function updateGeneticInfoDisplay() {
 	generationUntilAllMatchDisplay.innerText =
 		"Generation Until All Match: " + generationUntilAllMatchCounter;
 	populationSizeDisplay.innerText = "Population: " + populationSize;
-	averageFitnessDisplay.innerText = "Average Fitness: " + averageFitness;
-	mutationRateDisplay.innerText = "Mutation Rate: " + mutationRate * 10 + "%";
+	averageFitnessDisplay.innerText = "Average Fitness: " + averageFitness + "%";
+	mutationRateDisplay.innerText = "Mutation Rate: " + mutationRate * 100 + "%";
 }

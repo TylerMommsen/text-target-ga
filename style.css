@@ -5,6 +5,10 @@
 	font-family: sans-serif;
 }
 
+html {
+	background-color: #ffffff;
+}
+
 body {
 	padding: 10rem;
 	display: flex;
@@ -22,34 +26,35 @@ body {
 #enter-phrase-container {
 	display: flex;
 	flex-direction: column;
-	gap: 0.5rem;
-	width: fit-content;
+	gap: 1rem;
+	width: 100%;
+	max-width: 1000px;
 }
 
 #start-algorithm-btn {
 	font-weight: bold;
 	padding: 1rem;
 	border-radius: 1rem;
+	font-size: 2rem;
 	border: none;
 	cursor: pointer;
-	background-color: rgb(0, 184, 0);
+	background-color: #00b800;
 	color: white;
 }
 
-#stop-algorithm-btn {
-	font-weight: bold;
-	padding: 1rem;
-	border-radius: 1rem;
-	border: none;
-	cursor: pointer;
-	background-color: rgb(184, 0, 0);
-	color: white;
+#start-algorithm-btn:hover {
+	background-color: rgb(0, 174, 0);
+}
+
+#start-algorithm-btn:active {
+	background-color: rgb(0, 153, 0);
 }
 
 #target-phrase-input {
 	padding: 0.8rem 1.2rem 0.8rem 1.2rem;
 	font-size: 3rem;
 	border: 1px solid black;
+	width: 100%;
 }
 
 #genetic-algorithm-information {
@@ -65,10 +70,110 @@ body {
 	display: flex;
 	flex-direction: column;
 	gap: 1rem;
+	overflow-y: hidden;
 }
 
 #population-container {
 	height: 90%;
 	overflow-y: scroll;
-	font-size: 1.6rem;
+	font-size: 2rem;
+}
+
+/* scrollbar stuff */
+#population-container::-webkit-scrollbar {
+	width: 10px;
+	height: 8px;
+}
+
+#population-container::-webkit-scrollbar-track {
+	background: #f1f1f1;
+	border-radius: 10px;
+}
+
+#population-container::-webkit-scrollbar-thumb {
+	background: #888;
+	border-radius: 10px;
+}
+
+#population-container::-webkit-scrollbar-thumb:hover {
+	background: #555;
+}
+
+@media only screen and (max-width: 1920px) {
+	body {
+		padding: 5rem;
+	}
+
+	#information-side {
+		gap: 4rem;
+	}
+
+	#start-algorithm-btn {
+		font-size: 1.6rem;
+	}
+
+	#genetic-algorithm-information {
+		font-size: 2rem;
+	}
+}
+
+@media only screen and (max-width: 1200px) {
+	body {
+		padding: 4rem;
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	#information-side {
+		gap: 1rem;
+	}
+
+	#enter-phrase-container {
+		flex-direction: row;
+		width: 100%;
+	}
+
+	#start-algorithm-btn {
+		font-size: 1.6rem;
+		flex: 1;
+	}
+
+	#genetic-algorithm-information {
+		font-size: 2rem;
+	}
+
+	#population-container {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+		height: 100%;
+		font-size: 1.8rem;
+	}
+}
+
+@media only screen and (max-width: 768px) {
+	body {
+		padding: 2rem;
+	}
+
+	#information-side {
+		gap: 1rem;
+	}
+
+	#target-phrase-input {
+		padding: 0.4rem 1.2rem 0.4rem 1.2rem;
+		font-size: 2rem;
+	}
+
+	#start-algorithm-btn {
+		font-size: 1.2rem;
+		flex: 1;
+	}
+
+	#genetic-algorithm-information {
+		font-size: 1.4rem;
+	}
+
+	#population-container {
+		font-size: 1.4rem;
+	}
 }
