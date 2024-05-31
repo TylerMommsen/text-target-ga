@@ -145,6 +145,7 @@ body {
 	#population-container {
 		display: grid;
 		grid-template-columns: 1fr 1fr 1fr;
+		gap: 0.2rem;
 		height: 100%;
 		font-size: 1.8rem;
 	}
@@ -160,20 +161,25 @@ body {
 	}
 
 	#target-phrase-input {
-		padding: 0.4rem 1.2rem 0.4rem 1.2rem;
-		font-size: 2rem;
+		padding: 0rem 1rem 0rem 1rem;
+		font-size: 1.4rem;
 	}
 
 	#start-algorithm-btn {
-		font-size: 1.2rem;
+		font-size: 1rem;
 		flex: 1;
 	}
 
 	#genetic-algorithm-information {
-		font-size: 1.4rem;
+		font-size: 1rem;
+		gap: 0.5rem;
+	}
+
+	#population-side {
+		font-size: 1.2rem;
 	}
 
 	#population-container {
-		font-size: 1.4rem;
+		font-size: 0.8rem;
 	}
 }
