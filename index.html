@@ -1,39 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Text Target Genetic Algorithm</title>
-		<link rel="stylesheet" href="style.css" />
-		<link rel="icon" type="image/png" href="favicon.png" />
-	</head>
-	<body>
-		<div id="information-side">
-			<div id="enter-phrase-container">
-				<input id="target-phrase-input" placeholder="Enter target phrase" />
-
-				<button id="start-algorithm-btn">Start Algorithm</button>
-			</div>
-
-			<div id="genetic-algorithm-information">
-				<p id="target-phrase">Target Phrase:</p>
-				<p id="current-best-phrase">Current Best:</p>
-				<p id="generation-first-counter">Generation Until First Match:</p>
-				<p id="generation-all-counter">Generation Until All Match:</p>
-				<p id="population-size">Population:</p>
-				<p id="average-fitness">Average Fitness:</p>
-				<p id="mutation-rate">Mutation Rate:</p>
-			</div>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Text Target Genetic Algorithm</title>
+	<link rel="stylesheet" href="style.css" />
+	<link rel="icon" type="image/png" href="favicon.png" />
+</head>
+<body>
+	<div id="information-side">
+		<div id="enter-phrase-container">
+			<input id="target-phrase-input" placeholder="Enter target phrase" />
+			<button id="start-algorithm-btn">Start Algorithm</button>
 		</div>
 
-		<div id="population-side">
-			<h2>All Phrases</h2>
-
-			<div id="population-container"></div>
+		<div id="genetic-algorithm-information">
+			<p id="target-phrase">Target Phrase:</p>
+			<p id="current-best-phrase">Current Best:</p>
+			<p id="generation-first-counter">Generation Until First Match:</p>
+			<p id="generation-all-counter">Generation Until All Match:</p>
+			<p id="population-size">Population:</p>
+			<p id="average-fitness">Average Fitness:</p>
+			<p id="mutation-rate">Mutation Rate:</p>
 		</div>
+	</div>
 
-		<script src="main.js"></script>
-		<script src="population.js"></script>
-		<script src="phrase.js"></script>
-	</body>
+	<div id="population-side">
+		<h2>All Phrases</h2>
+		<div id="population-container"></div>
+	</div>
+
+	<script src="main.js"></script>
+	<script src="population.js"></script>
+	<script src="phrase.js"></script>
+</body>
 </html>
