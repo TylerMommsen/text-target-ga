@@ -99,3 +99,10 @@ function updateGeneticInfoDisplay() {
 	averageFitnessDisplay.innerText = "Average Fitness: " + averageFitness + "%";
 	mutationRateDisplay.innerText = "Mutation Rate: " + mutationRate * 100 + "%";
 }
+
+// Detectar tecla ENTER en el input y activar el botón
+targetPhraseInput.addEventListener("keydown", function(event) {
+	if (event.key === "Enter") {
+		startAlgorithmBtn.click();
+	}
+});
